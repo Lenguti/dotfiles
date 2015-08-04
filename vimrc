@@ -24,6 +24,7 @@ filetype plugin indent on    " required
 
 syntax on " syntax highlighting
 set relativenumber
+set backspace=2 " make backspace work like most other apps
 set number " show line numbers
 set laststatus=2
 set si " smart indent
