@@ -10,7 +10,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'tomtom/tlib_vim'
 Plugin 'marcweber/vim-addon-mw-utils'
@@ -18,6 +17,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-runner'
+Plugin 'tpope/vim-dispatch'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -41,14 +45,14 @@ colorscheme molokai
 let g:molokai_original = 1
 set cursorline
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' "show line numbers in Netrw
+let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
 set noswapfile " Disable swapfile from creating
 set wildmenu " visual autocomplete for command menu
-let NERDTreeShowLineNumbers=1 " show line numbers in NERDTree
-
+let g:airline_theme="murmur"
+let g:airline_powerline_fonts = 1
 
 " Mappings
 let mapleader = " "
-nmap <silent> <leader>d :NERDTreeToggle<CR>
 " Git Blame mapping
 vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 nnoremap <Leader>w :w<CR>
@@ -64,18 +68,20 @@ nnoremap <Leader>ss <C-W>w
 nmap <leader>rv :RV<CR>
 " " Open related file in full pane with <SPACE> rr
 nmap <leader>rr :R<CR>
-" Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-endif
 " Clear trailing whitespace
 nnoremap <Leader>rt :%s/\s\+$//e<CR>
+" Open tmux split with irb
+nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<cr>
+" Focus on tmux runner split
+nnoremap <leader>foc :VtrFocusRunner <enter>
+" Send lines to tmux split and run
+nnoremap <leader>run :VtrSendLinesToRunner <enter>
+" Open tmux runner split
+nnoremap <leader>trun :VtrOpenRunner <enter>
+" Send file to tmux split
+nnoremap <leader>tsen :VtrSendFile <enter>
 " Drop in Pry to debug. Leader bp
 nmap <leader>bp orequire 'pry'; binding.pry<esc>^
-" Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-endif
 " Enter Visual mode with <Space><Space>
 nmap <Leader><Leader> V
 " Open VIMRC file with <SPACE> vm
@@ -86,6 +92,15 @@ inoremap jk <esc>
 nmap <leader>rv :RV<CR>
 " " Open related file in full pane with <SPACE> rr
 nmap <leader>rr :R<CR>
+" Source (reload) your vimrc. Type space, s, o in sequence to trigger
+nmap <leader>so :source $MYVIMRC<cr>
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
 
 runtime macros/matchit.vim " Jump between method/class openings and closing tags with %
 
