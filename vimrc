@@ -22,6 +22,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'tpope/vim-dispatch'
+Plugin 'unblevable/quick-scope'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -41,7 +42,7 @@ set timeoutlen=1000 " used for mapping delays
 set ttimeoutlen=0 " used for keycode delays
 set incsearch " searches characters as they are entered
 set hlsearch " highlight matches
-colorscheme molokai
+colorscheme jellybeans
 let g:molokai_original = 1
 set cursorline
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' "show line numbers in Netrw
@@ -94,6 +95,8 @@ nmap <leader>rv :RV<CR>
 nmap <leader>rr :R<CR>
 " Source (reload) your vimrc. Type space, s, o in sequence to trigger
 nmap <leader>so :source $MYVIMRC<cr>
+" pastes lines from your clipboard correctly indendted
+map <leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
