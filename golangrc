@@ -2,6 +2,7 @@
 
 export GOROOT="$HOME/go1.6"
 export GOPATH="$HOME/go:$HOME/go1.6"
+export GOBIN="$GOROOT/bin:$HOME/go1.6/bin"
 if [[ "$PATH" != *"$GOBIN"* ]]; then
   export PATH="$GOBIN:$PATH"
 fi
