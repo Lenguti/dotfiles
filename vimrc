@@ -106,6 +106,7 @@ autocmd VimResized * :wincmd =
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
+" test
 
 runtime macros/matchit.vim " Jump between method/class openings and closing tags with %
 
