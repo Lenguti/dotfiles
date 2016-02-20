@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'fatih/vim-go'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
