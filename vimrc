@@ -1,9 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 Plugin 'fatih/vim-go'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'gmarik/Vundle.vim'
@@ -25,17 +25,17 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'tpope/vim-dispatch'
 Plugin 'unblevable/quick-scope'
-
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 syntax on " syntax highlighting
+colorscheme jellybeans
+
 set relativenumber
 set backspace=2 " make backspace work like most other apps
 set number " show line numbers
 set laststatus=2
 set si " smart indent
-let g:netrw_liststyle=3 " sets the list style for Netrw
 set noshowmode " remove mode from status line when using vim airline
 set expandtab " tabs are spaces
 set tabstop=2 " number of visual spaces per TAB
@@ -44,18 +44,20 @@ set timeoutlen=1000 " used for mapping delays
 set ttimeoutlen=0 " used for keycode delays
 set incsearch " searches characters as they are entered
 set hlsearch " highlight matches
-colorscheme jellybeans
-let g:molokai_original = 1
-set cursorline
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' "show line numbers in Netrw
-let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
 set noswapfile " Disable swapfile from creating
 set wildmenu " visual autocomplete for command menu
+set cursorline
+" set list listchars=tab:»·,trail:· " adds a dot for spaces
+
+let g:molokai_original = 1
+let g:netrw_liststyle=3 " sets the list style for Netrw
+let mapleader = " "
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' "show line numbers in Netrw
+let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
 let g:airline_theme="murmur"
 let g:airline_powerline_fonts = 1
+" let &colorcolumn=join(range(81,999),",")
 
-" Mappings
-let mapleader = " "
 " Git Blame mapping
 vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 nnoremap <Leader>w :w<CR>
@@ -102,12 +104,11 @@ map <leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
+autocmd FileType dockerfile setlocal sw=8 ts=8 noet
 
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
-" test
 
 runtime macros/matchit.vim " Jump between method/class openings and closing tags with %
-
 source ~/.vim/rspec " RSpec shortcut commands
