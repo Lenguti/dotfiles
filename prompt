@@ -1,1 +1,38 @@
-/Users/lenardgutierrez/.prompt
+#!/usr/bin/env bash
+
+function prompt_command() {
+  code=$?
+  
+  Success="$(tput setaf 212)"
+  Fail="$(tput setaf 124)"
+  Name="$(tput setaf 93)"
+  Git="$(tput setaf 8)"
+  Reset="$(tput sgr0)"
+  
+  if [ $code -eq 0 ]; then
+    echo -n "${Success}(*′☉.̫☉)${Reset} "
+  else
+    echo -n "${Fail}(｡ì_í｡)${Reset} "
+  fi
+  
+  echo -n "${Name}$(whoami)${Reset} "
+
+  if $(git rev-parse -q HEAD >/dev/null 2>&1); then
+    branch=$(git rev-parse --abbrev-ref HEAD)
+    echo -n "${Git}git:"
+    if [[ "$branch" == "HEAD" ]]; then
+      branch="$(git rev-parse --short HEAD)"
+    fi
+    echo -n "${branch}${Reset} "
+  fi
+  echo "${Reset}"
+}
+export PROMPT_COMMAND="prompt_command"
+
+function create_ps1 {
+  Files="\[$(tput setaf 63)\]"
+  Git="\[$(tput setaf 8)\]"
+  Reset="\[$(tput sgr0)\]"
+  echo -e "${Files}\w ${Reset}${Git}>${Reset} "
+}
+export PS1="$(create_ps1)"
