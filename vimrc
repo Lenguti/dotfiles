@@ -18,6 +18,7 @@ Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'garbas/vim-snipmate'
+Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-surround'
@@ -104,7 +105,7 @@ map <leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
-autocmd FileType dockerfile setlocal sw=8 ts=8 noet
+au FileType Dockerfile setl sw=8 sts=8 et
 
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
