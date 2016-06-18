@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-export GOROOT="$HOME/go1.6"
-export GOPATH="$HOME/go:$HOME/go1.6"
-export GOBIN="$GOROOT/bin:$HOME/go1.6/bin"
+export GOROOT="/usr/local/go"
+export GOPATH="$HOME/go"
+export GOBIN="/usr/local/go"
 if [[ "$PATH" != *"$GOBIN"* ]]; then
   export PATH="$GOBIN:$PATH"
 fi
