@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 export GOROOT="/usr/local/go"
-export GOPATH="$HOME/go"
-export GOBIN="/usr/local/go"
-if [[ "$PATH" != *"$GOBIN"* ]]; then
-  export PATH="$GOBIN:$PATH"
+export GOPATH="${HOME}/go"
+export GOBIN="${HOME}/go/bin"
+if [[ "${PATH}" != *"${GOBIN}"* ]]; then
+  export PATH="${GOBIN}:${PATH}"
 fi
 
-alias gogh='cd "$HOME/go/src/github.com"'
-alias gome='cd "$HOME/go/src/github.com/lenguti"'
+alias gogh='cd "${HOME}/go/src/github.com"'
+alias gome='cd "${HOME}/go/src/github.com/lenguti"'

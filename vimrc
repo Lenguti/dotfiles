@@ -32,9 +32,9 @@ filetype plugin indent on    " required
 syntax on " syntax highlighting
 colorscheme jellybeans
 
-set relativenumber
 set backspace=2 " make backspace work like most other apps
 set number " show line numbers
+set relativenumber
 set laststatus=2
 set si " smart indent
 set noshowmode " remove mode from status line when using vim airline
