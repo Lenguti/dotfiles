@@ -5,7 +5,6 @@ source $HOME/.golangrc
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-#source ~/.gitprompt
 source ~/.prompt
 
 alias gst="git status"
@@ -27,7 +26,6 @@ alias pp="cd ~/Projects/patient-portal"
 alias ls="ls -G -al"
 alias t="tmux"
 alias log="tail -f log/development.log"
-alias root="cd ~/../../../"
 alias notes="cd ~/notes"
 alias nx="sudo nginx"
 alias nxs="sudo nginx -s stop"
