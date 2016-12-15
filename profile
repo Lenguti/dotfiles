@@ -44,7 +44,7 @@ update-docker-host(){
 }
 
 function rmi-docker() {
-  docker images -q --filter 'dangling=true' | xargs docker rmi
+  docker images |grep none | awk '{print $3}' | xargs docker rmi -f
 }
 
 function drop-containers() {
@@ -57,6 +57,10 @@ function stopdrop-containers() {
 
 function drop-volumes() {
   docker volume ls -qf dangling=true | xargs docker volume rm
+}
+
+function drop-all-images() {
+  docker images | awk '{print $3}' | xargs docker rmi -f
 }
 
 function linux-game() {

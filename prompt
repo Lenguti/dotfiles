@@ -29,7 +29,7 @@ function prompt_command() {
 }
 export PROMPT_COMMAND="prompt_command"
 
-function create_ps1 {
+function create_ps1() {
   Files="\[$(tput setaf 63)\]"
   Git="\[$(tput setaf 8)\]"
   Reset="\[$(tput sgr0)\]"

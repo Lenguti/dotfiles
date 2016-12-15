@@ -26,6 +26,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'tpope/vim-dispatch'
 Plugin 'unblevable/quick-scope'
+Plugin 'elixir-lang/vim-elixir'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
