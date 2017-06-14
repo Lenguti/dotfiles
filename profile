@@ -1,9 +1,6 @@
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/Projects/scripts"
 export PATH=$PATH:/usr/local/sbin
-source $HOME/.golangrc
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export GOPATH="${HOME}/go"
 
 source ~/.prompt
 
@@ -34,35 +31,5 @@ alias vi="vim"
 alias mysql="mysql -uroot"
 alias rc="rails c"
 alias dm="eval "'"$(docker-machine env mdlive)"'""
-
-update-docker-host(){
-  sudo sed -i '' '/[[:space:]]docker\.local$/d' /etc/hosts
-
-  export DOCKER_IP="$(echo ${DOCKER_HOST} | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
-
-  [[ -n $DOCKER_IP ]] && sudo /bin/bash -c "echo \"${DOCKER_IP}    docker.local\" >> /etc/hosts"
-}
-
-function rmi-docker() {
-  docker images |grep none | awk '{print $3}' | xargs docker rmi -f
-}
-
-function drop-containers() {
-  docker ps -aq | xargs docker rm -fv
-}
-
-function stopdrop-containers() {
-  docker ps -a | grep Exited | awk '{print  $1}' | xargs docker rm -fv
-}
-
-function drop-volumes() {
-  docker volume ls -qf dangling=true | xargs docker volume rm
-}
-
-function drop-all-images() {
-  docker images | awk '{print $3}' | xargs docker rmi -f
-}
-
-function linux-game() {
-  ssh bandit"$1"@bandit.labs.overthewire.org
-}
+alias gome="cd ~/go"
+alias gop="cd ~/go/src/bitbucket.org/mlcloud/"

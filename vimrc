@@ -9,7 +9,6 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab'
@@ -24,6 +23,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
+Plugin 'hashivim/vim-terraform'
+Plugin 'edkolev/tmuxline.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'unblevable/quick-scope'
 Plugin 'elixir-lang/vim-elixir'
@@ -55,8 +56,7 @@ let g:molokai_original = 1
 let g:netrw_liststyle=3 " sets the list style for Netrw
 let mapleader = " "
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' "show line numbers in Netrw
-let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
-let g:airline_theme="murmur"
+" let g:airline_theme="murmur"
 let g:airline_powerline_fonts = 1
 " let &colorcolumn=join(range(81,999),",")
 
@@ -103,6 +103,20 @@ nmap <leader>rr :R<CR>
 nmap <leader>so :source $MYVIMRC<cr>
 " pastes lines from your clipboard correctly indendted
 map <leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+let g:terraform_fmt_on_save = 1
+let g:tagbar_type_terraform = {
+    \ 'ctagstype' : 'terraform',
+    \ 'kinds' : [
+        \ 'r:Resources',
+        \ 'd:Datas',
+        \ 'v:Variables',
+        \ 'p:Providers',
+        \ 'o:Outputs',
+        \ 'm:Modules',
+        \ 'f:TFVars'
+    \ ],
+    \ 'sort' : 1
+    \ }
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
@@ -113,4 +127,3 @@ nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 
 runtime macros/matchit.vim " Jump between method/class openings and closing tags with %
-source ~/.vim/rspec " RSpec shortcut commands
