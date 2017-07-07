@@ -53,6 +53,7 @@ set cursorline
 " set list listchars=tab:»·,trail:· " adds a dot for spaces
 
 let g:molokai_original = 1
+let g:go_fmt_command = "goimports"
 let g:netrw_liststyle=3 " sets the list style for Netrw
 let mapleader = " "
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' "show line numbers in Netrw
@@ -117,6 +118,9 @@ let g:tagbar_type_terraform = {
     \ ],
     \ 'sort' : 1
     \ }
+" subtle hint for anything past col 80
+hi OverLength ctermbg=0 ctermfg=1
+match OverLength /\%81v.\+/
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
